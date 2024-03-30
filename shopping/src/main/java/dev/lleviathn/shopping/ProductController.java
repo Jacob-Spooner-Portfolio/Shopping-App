@@ -1,6 +1,5 @@
 package dev.lleviathn.shopping;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +18,14 @@ public class ProductController
     @Autowired
     private ProductService productService;
 
-    // Gets all movies
+    // Gets all products
     @GetMapping
-    public ResponseEntity<List<Product>> allProducts()
+    public ResponseEntity<List<Product>> getAllProducts()
     {
         return new ResponseEntity<List<Product>>(productService.allProducts(), HttpStatus.OK);
     }
 
+    // Gets product based on SKU
     @GetMapping("/{sku}")
     public ResponseEntity<Optional<Product>> getProductById(@PathVariable int sku)
     {
